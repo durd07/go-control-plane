@@ -1,4 +1,4 @@
-module github.com/envoyproxy/go-control-plane
+module github.com/durd07/go-control-plane
 
 go 1.11
 
