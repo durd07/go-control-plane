@@ -6,7 +6,7 @@ import (
 	"log"
 	"sync"
 
-	discovery "github.com/envoyproxy/go-control-plane/envoy/service/discovery/v3"
+	discovery "github.com/durd07/go-control-plane/envoy/service/discovery/v3"
 )
 
 type Callbacks struct {

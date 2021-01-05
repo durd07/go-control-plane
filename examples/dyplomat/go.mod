@@ -3,7 +3,7 @@ module kubecon-demo/dyplomat
 go 1.14
 
 require (
-	github.com/envoyproxy/go-control-plane v0.9.6
+	github.com/durd07/go-control-plane v0.9.6
 	golang.org/x/time v0.0.0-20200630173020-3af7569d3a1e // indirect
 	google.golang.org/grpc v1.30.0
 	gopkg.in/yaml.v2 v2.2.8

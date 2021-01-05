@@ -3,9 +3,9 @@ package resource
 import (
 	"github.com/golang/protobuf/ptypes"
 
-	core "github.com/envoyproxy/go-control-plane/envoy/config/core/v3"
-	listener "github.com/envoyproxy/go-control-plane/envoy/config/listener/v3"
-	hcm "github.com/envoyproxy/go-control-plane/envoy/extensions/filters/network/http_connection_manager/v3"
+	core "github.com/durd07/go-control-plane/envoy/config/core/v3"
+	listener "github.com/durd07/go-control-plane/envoy/config/listener/v3"
+	hcm "github.com/durd07/go-control-plane/envoy/extensions/filters/network/http_connection_manager/v3"
 )
 
 // Resource types in xDS v3.

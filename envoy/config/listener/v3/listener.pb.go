@@ -9,8 +9,8 @@ package envoy_config_listener_v3
 import (
 	_ "github.com/cncf/udpa/go/udpa/annotations"
 	v1 "github.com/cncf/udpa/go/udpa/core/v1"
-	v31 "github.com/envoyproxy/go-control-plane/envoy/config/accesslog/v3"
-	v3 "github.com/envoyproxy/go-control-plane/envoy/config/core/v3"
+	v31 "github.com/durd07/go-control-plane/envoy/config/accesslog/v3"
+	v3 "github.com/durd07/go-control-plane/envoy/config/core/v3"
 	_ "github.com/envoyproxy/protoc-gen-validate/validate"
 	proto "github.com/golang/protobuf/proto"
 	duration "github.com/golang/protobuf/ptypes/duration"

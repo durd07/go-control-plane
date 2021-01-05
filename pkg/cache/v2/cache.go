@@ -20,8 +20,8 @@ import (
 	"fmt"
 	"sync/atomic"
 
-	discovery "github.com/envoyproxy/go-control-plane/envoy/api/v2"
-	"github.com/envoyproxy/go-control-plane/pkg/cache/types"
+	discovery "github.com/durd07/go-control-plane/envoy/api/v2"
+	"github.com/durd07/go-control-plane/pkg/cache/types"
 	"github.com/golang/protobuf/ptypes/any"
 )
 
