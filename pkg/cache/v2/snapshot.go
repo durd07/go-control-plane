@@ -18,7 +18,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/durd07/go-control-plane/pkg/cache/types"
+	"github.com/envoyproxy/go-control-plane/pkg/cache/types"
 )
 
 // Resources is a versioned group of resources.
