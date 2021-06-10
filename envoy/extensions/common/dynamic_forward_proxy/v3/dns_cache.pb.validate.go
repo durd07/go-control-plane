@@ -15,7 +15,7 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"google.golang.org/protobuf/types/known/anypb"
+	"github.com/golang/protobuf/ptypes"
 
 	v3 "github.com/envoyproxy/go-control-plane/envoy/config/cluster/v3"
 )
@@ -32,7 +32,7 @@ var (
 	_ = time.Duration(0)
 	_ = (*url.URL)(nil)
 	_ = (*mail.Address)(nil)
-	_ = anypb.Any{}
+	_ = ptypes.DynamicAny{}
 
 	_ = v3.Cluster_DnsLookupFamily(0)
 )
@@ -137,7 +137,7 @@ func (m *DnsCacheConfig) Validate() error {
 	}
 
 	if d := m.GetDnsRefreshRate(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return DnsCacheConfigValidationError{
 				field:  "DnsRefreshRate",
@@ -158,7 +158,7 @@ func (m *DnsCacheConfig) Validate() error {
 	}
 
 	if d := m.GetHostTtl(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return DnsCacheConfigValidationError{
 				field:  "HostTtl",
@@ -210,16 +210,6 @@ func (m *DnsCacheConfig) Validate() error {
 	}
 
 	// no validation rules for UseTcpForDnsLookups
-
-	if v, ok := interface{}(m.GetDnsResolutionConfig()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return DnsCacheConfigValidationError{
-				field:  "DnsResolutionConfig",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
 
 	return nil
 }

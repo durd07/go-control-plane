@@ -15,7 +15,7 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"google.golang.org/protobuf/types/known/anypb"
+	"github.com/golang/protobuf/ptypes"
 )
 
 // ensure the imports are used
@@ -30,7 +30,7 @@ var (
 	_ = time.Duration(0)
 	_ = (*url.URL)(nil)
 	_ = (*mail.Address)(nil)
-	_ = anypb.Any{}
+	_ = ptypes.DynamicAny{}
 )
 
 // Validate checks the field values on Bootstrap with the rules defined in the
@@ -191,17 +191,7 @@ func (m *Bootstrap) Validate() error {
 		}
 	}
 
-	// no validation rules for HiddenEnvoyDeprecatedUseTcpForDnsLookups
-
-	if v, ok := interface{}(m.GetDnsResolutionConfig()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return BootstrapValidationError{
-				field:  "DnsResolutionConfig",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for UseTcpForDnsLookups
 
 	for idx, item := range m.GetBootstrapExtensions() {
 		_, _ = idx, item
@@ -282,7 +272,7 @@ func (m *Bootstrap) Validate() error {
 	case *Bootstrap_StatsFlushInterval:
 
 		if d := m.GetStatsFlushInterval(); d != nil {
-			dur, err := d.AsDuration(), d.CheckValid()
+			dur, err := ptypes.Duration(d)
 			if err != nil {
 				return BootstrapValidationError{
 					field:  "StatsFlushInterval",
@@ -713,7 +703,7 @@ func (m *Watchdog) Validate() error {
 	}
 
 	if d := m.GetMaxKillTimeoutJitter(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return WatchdogValidationError{
 				field:  "MaxKillTimeoutJitter",
