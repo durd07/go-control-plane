@@ -15,7 +15,7 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"google.golang.org/protobuf/types/known/anypb"
+	"github.com/golang/protobuf/ptypes"
 )
 
 // ensure the imports are used
@@ -30,7 +30,7 @@ var (
 	_ = time.Duration(0)
 	_ = (*url.URL)(nil)
 	_ = (*mail.Address)(nil)
-	_ = anypb.Any{}
+	_ = ptypes.DynamicAny{}
 )
 
 // Validate checks the field values on TcpProtocolOptions with the rules
@@ -116,28 +116,6 @@ func (m *QuicProtocolOptions) Validate() error {
 				cause:  err,
 			}
 		}
-	}
-
-	if wrapper := m.GetInitialStreamWindowSize(); wrapper != nil {
-
-		if val := wrapper.GetValue(); val < 1 || val > 16777216 {
-			return QuicProtocolOptionsValidationError{
-				field:  "InitialStreamWindowSize",
-				reason: "value must be inside range [1, 16777216]",
-			}
-		}
-
-	}
-
-	if wrapper := m.GetInitialConnectionWindowSize(); wrapper != nil {
-
-		if val := wrapper.GetValue(); val < 1 || val > 25165824 {
-			return QuicProtocolOptionsValidationError{
-				field:  "InitialConnectionWindowSize",
-				reason: "value must be inside range [1, 25165824]",
-			}
-		}
-
 	}
 
 	return nil
@@ -270,92 +248,6 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = UpstreamHttpProtocolOptionsValidationError{}
-
-// Validate checks the field values on AlternateProtocolsCacheOptions with the
-// rules defined in the proto definition for this message. If any rules are
-// violated, an error is returned.
-func (m *AlternateProtocolsCacheOptions) Validate() error {
-	if m == nil {
-		return nil
-	}
-
-	if utf8.RuneCountInString(m.GetName()) < 1 {
-		return AlternateProtocolsCacheOptionsValidationError{
-			field:  "Name",
-			reason: "value length must be at least 1 runes",
-		}
-	}
-
-	if wrapper := m.GetMaxEntries(); wrapper != nil {
-
-		if wrapper.GetValue() <= 0 {
-			return AlternateProtocolsCacheOptionsValidationError{
-				field:  "MaxEntries",
-				reason: "value must be greater than 0",
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// AlternateProtocolsCacheOptionsValidationError is the validation error
-// returned by AlternateProtocolsCacheOptions.Validate if the designated
-// constraints aren't met.
-type AlternateProtocolsCacheOptionsValidationError struct {
-	field  string
-	reason string
-	cause  error
-	key    bool
-}
-
-// Field function returns field value.
-func (e AlternateProtocolsCacheOptionsValidationError) Field() string { return e.field }
-
-// Reason function returns reason value.
-func (e AlternateProtocolsCacheOptionsValidationError) Reason() string { return e.reason }
-
-// Cause function returns cause value.
-func (e AlternateProtocolsCacheOptionsValidationError) Cause() error { return e.cause }
-
-// Key function returns key value.
-func (e AlternateProtocolsCacheOptionsValidationError) Key() bool { return e.key }
-
-// ErrorName returns error name.
-func (e AlternateProtocolsCacheOptionsValidationError) ErrorName() string {
-	return "AlternateProtocolsCacheOptionsValidationError"
-}
-
-// Error satisfies the builtin error interface
-func (e AlternateProtocolsCacheOptionsValidationError) Error() string {
-	cause := ""
-	if e.cause != nil {
-		cause = fmt.Sprintf(" | caused by: %v", e.cause)
-	}
-
-	key := ""
-	if e.key {
-		key = "key for "
-	}
-
-	return fmt.Sprintf(
-		"invalid %sAlternateProtocolsCacheOptions.%s: %s%s",
-		key,
-		e.field,
-		e.reason,
-		cause)
-}
-
-var _ error = AlternateProtocolsCacheOptionsValidationError{}
-
-var _ interface {
-	Field() string
-	Reason() string
-	Key() bool
-	Cause() error
-	ErrorName() string
-} = AlternateProtocolsCacheOptionsValidationError{}
 
 // Validate checks the field values on HttpProtocolOptions with the rules
 // defined in the proto definition for this message. If any rules are
@@ -588,7 +480,7 @@ func (m *KeepaliveSettings) Validate() error {
 	}
 
 	if d := m.GetInterval(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return KeepaliveSettingsValidationError{
 				field:  "Interval",
@@ -616,7 +508,7 @@ func (m *KeepaliveSettings) Validate() error {
 	}
 
 	if d := m.GetTimeout(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return KeepaliveSettingsValidationError{
 				field:  "Timeout",

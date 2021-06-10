@@ -15,7 +15,7 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"google.golang.org/protobuf/types/known/anypb"
+	"github.com/golang/protobuf/ptypes"
 
 	core "github.com/envoyproxy/go-control-plane/envoy/api/v2/core"
 )
@@ -32,7 +32,7 @@ var (
 	_ = time.Duration(0)
 	_ = (*url.URL)(nil)
 	_ = (*mail.Address)(nil)
-	_ = anypb.Any{}
+	_ = ptypes.DynamicAny{}
 
 	_ = core.RoutingPriority(0)
 
@@ -3793,7 +3793,7 @@ func (m *RetryPolicy_RetryBackOff) Validate() error {
 	}
 
 	if d := m.GetBaseInterval(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return RetryPolicy_RetryBackOffValidationError{
 				field:  "BaseInterval",
@@ -3814,7 +3814,7 @@ func (m *RetryPolicy_RetryBackOff) Validate() error {
 	}
 
 	if d := m.GetMaxInterval(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return RetryPolicy_RetryBackOffValidationError{
 				field:  "MaxInterval",

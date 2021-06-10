@@ -15,7 +15,7 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"google.golang.org/protobuf/types/known/anypb"
+	"github.com/golang/protobuf/ptypes"
 
 	v3 "github.com/envoyproxy/go-control-plane/envoy/type/v3"
 )
@@ -32,7 +32,7 @@ var (
 	_ = time.Duration(0)
 	_ = (*url.URL)(nil)
 	_ = (*mail.Address)(nil)
-	_ = anypb.Any{}
+	_ = ptypes.DynamicAny{}
 
 	_ = v3.CodecClientType(0)
 )
@@ -53,7 +53,7 @@ func (m *HealthCheck) Validate() error {
 	}
 
 	if d := m.GetTimeout(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return HealthCheckValidationError{
 				field:  "Timeout",
@@ -81,7 +81,7 @@ func (m *HealthCheck) Validate() error {
 	}
 
 	if d := m.GetInterval(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return HealthCheckValidationError{
 				field:  "Interval",
@@ -178,7 +178,7 @@ func (m *HealthCheck) Validate() error {
 	}
 
 	if d := m.GetNoTrafficInterval(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return HealthCheckValidationError{
 				field:  "NoTrafficInterval",
@@ -199,7 +199,7 @@ func (m *HealthCheck) Validate() error {
 	}
 
 	if d := m.GetNoTrafficHealthyInterval(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return HealthCheckValidationError{
 				field:  "NoTrafficHealthyInterval",
@@ -220,7 +220,7 @@ func (m *HealthCheck) Validate() error {
 	}
 
 	if d := m.GetUnhealthyInterval(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return HealthCheckValidationError{
 				field:  "UnhealthyInterval",
@@ -241,7 +241,7 @@ func (m *HealthCheck) Validate() error {
 	}
 
 	if d := m.GetUnhealthyEdgeInterval(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return HealthCheckValidationError{
 				field:  "UnhealthyEdgeInterval",
@@ -262,7 +262,7 @@ func (m *HealthCheck) Validate() error {
 	}
 
 	if d := m.GetHealthyEdgeInterval(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return HealthCheckValidationError{
 				field:  "HealthyEdgeInterval",

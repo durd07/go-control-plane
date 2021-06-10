@@ -15,7 +15,7 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"google.golang.org/protobuf/types/known/anypb"
+	"github.com/golang/protobuf/ptypes"
 )
 
 // ensure the imports are used
@@ -30,7 +30,7 @@ var (
 	_ = time.Duration(0)
 	_ = (*url.URL)(nil)
 	_ = (*mail.Address)(nil)
-	_ = anypb.Any{}
+	_ = ptypes.DynamicAny{}
 )
 
 // Validate checks the field values on ClusterCollection with the rules defined
@@ -152,7 +152,7 @@ func (m *Cluster) Validate() error {
 	}
 
 	if d := m.GetConnectTimeout(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return ClusterValidationError{
 				field:  "ConnectTimeout",
@@ -299,7 +299,7 @@ func (m *Cluster) Validate() error {
 	}
 
 	if d := m.GetDnsRefreshRate(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return ClusterValidationError{
 				field:  "DnsRefreshRate",
@@ -338,13 +338,13 @@ func (m *Cluster) Validate() error {
 		}
 	}
 
-	for idx, item := range m.GetHiddenEnvoyDeprecatedDnsResolvers() {
+	for idx, item := range m.GetDnsResolvers() {
 		_, _ = idx, item
 
 		if v, ok := interface{}(item).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
 				return ClusterValidationError{
-					field:  fmt.Sprintf("HiddenEnvoyDeprecatedDnsResolvers[%v]", idx),
+					field:  fmt.Sprintf("DnsResolvers[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
 				}
@@ -353,17 +353,7 @@ func (m *Cluster) Validate() error {
 
 	}
 
-	// no validation rules for HiddenEnvoyDeprecatedUseTcpForDnsLookups
-
-	if v, ok := interface{}(m.GetDnsResolutionConfig()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return ClusterValidationError{
-				field:  "DnsResolutionConfig",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for UseTcpForDnsLookups
 
 	if v, ok := interface{}(m.GetOutlierDetection()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
@@ -376,7 +366,7 @@ func (m *Cluster) Validate() error {
 	}
 
 	if d := m.GetCleanupInterval(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return ClusterValidationError{
 				field:  "CleanupInterval",
@@ -1818,7 +1808,7 @@ func (m *Cluster_RefreshRate) Validate() error {
 	}
 
 	if d := m.GetBaseInterval(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return Cluster_RefreshRateValidationError{
 				field:  "BaseInterval",
@@ -1839,7 +1829,7 @@ func (m *Cluster_RefreshRate) Validate() error {
 	}
 
 	if d := m.GetMaxInterval(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return Cluster_RefreshRateValidationError{
 				field:  "MaxInterval",

@@ -15,7 +15,7 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"google.golang.org/protobuf/types/known/anypb"
+	"github.com/golang/protobuf/ptypes"
 )
 
 // ensure the imports are used
@@ -30,7 +30,7 @@ var (
 	_ = time.Duration(0)
 	_ = (*url.URL)(nil)
 	_ = (*mail.Address)(nil)
-	_ = anypb.Any{}
+	_ = ptypes.DynamicAny{}
 )
 
 // Validate checks the field values on HttpConnectionManager with the rules
@@ -146,10 +146,10 @@ func (m *HttpConnectionManager) Validate() error {
 
 	if wrapper := m.GetMaxRequestHeadersKb(); wrapper != nil {
 
-		if val := wrapper.GetValue(); val <= 0 || val > 8192 {
+		if val := wrapper.GetValue(); val <= 0 || val > 96 {
 			return HttpConnectionManagerValidationError{
 				field:  "MaxRequestHeadersKb",
-				reason: "value must be inside range (0, 8192]",
+				reason: "value must be inside range (0, 96]",
 			}
 		}
 
@@ -176,7 +176,7 @@ func (m *HttpConnectionManager) Validate() error {
 	}
 
 	if d := m.GetRequestHeadersTimeout(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return HttpConnectionManagerValidationError{
 				field:  "RequestHeadersTimeout",
@@ -241,22 +241,7 @@ func (m *HttpConnectionManager) Validate() error {
 		}
 	}
 
-	// no validation rules for HiddenEnvoyDeprecatedXffNumTrustedHops
-
-	for idx, item := range m.GetOriginalIpDetectionExtensions() {
-		_, _ = idx, item
-
-		if v, ok := interface{}(item).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return HttpConnectionManagerValidationError{
-					field:  fmt.Sprintf("OriginalIpDetectionExtensions[%v]", idx),
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
-			}
-		}
-
-	}
+	// no validation rules for XffNumTrustedHops
 
 	if v, ok := interface{}(m.GetInternalAddressConfig()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
@@ -380,8 +365,6 @@ func (m *HttpConnectionManager) Validate() error {
 			}
 		}
 	}
-
-	// no validation rules for StripTrailingHostDot
 
 	switch m.RouteSpecifier.(type) {
 
