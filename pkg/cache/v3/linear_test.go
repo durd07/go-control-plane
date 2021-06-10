@@ -20,7 +20,7 @@ import (
 
 	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 
-	"github.com/envoyproxy/go-control-plane/pkg/cache/types"
+	"github.com/durd07/go-control-plane/pkg/cache/types"
 )
 
 const (

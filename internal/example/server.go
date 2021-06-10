@@ -21,14 +21,14 @@ import (
 
 	"google.golang.org/grpc"
 
-	clusterservice "github.com/envoyproxy/go-control-plane/envoy/service/cluster/v3"
-	discoverygrpc "github.com/envoyproxy/go-control-plane/envoy/service/discovery/v3"
-	endpointservice "github.com/envoyproxy/go-control-plane/envoy/service/endpoint/v3"
-	listenerservice "github.com/envoyproxy/go-control-plane/envoy/service/listener/v3"
-	routeservice "github.com/envoyproxy/go-control-plane/envoy/service/route/v3"
-	runtimeservice "github.com/envoyproxy/go-control-plane/envoy/service/runtime/v3"
-	secretservice "github.com/envoyproxy/go-control-plane/envoy/service/secret/v3"
-	"github.com/envoyproxy/go-control-plane/pkg/server/v3"
+	clusterservice "github.com/durd07/go-control-plane/envoy/service/cluster/v3"
+	discoverygrpc "github.com/durd07/go-control-plane/envoy/service/discovery/v3"
+	endpointservice "github.com/durd07/go-control-plane/envoy/service/endpoint/v3"
+	listenerservice "github.com/durd07/go-control-plane/envoy/service/listener/v3"
+	routeservice "github.com/durd07/go-control-plane/envoy/service/route/v3"
+	runtimeservice "github.com/durd07/go-control-plane/envoy/service/runtime/v3"
+	secretservice "github.com/durd07/go-control-plane/envoy/service/secret/v3"
+	"github.com/durd07/go-control-plane/pkg/server/v3"
 )
 
 const (

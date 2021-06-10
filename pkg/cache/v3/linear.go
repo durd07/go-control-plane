@@ -21,8 +21,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/envoyproxy/go-control-plane/pkg/cache/types"
-	"github.com/envoyproxy/go-control-plane/pkg/server/stream/v3"
+	"github.com/durd07/go-control-plane/pkg/cache/types"
+	"github.com/durd07/go-control-plane/pkg/server/stream/v3"
 )
 
 type watches = map[chan Response]struct{}

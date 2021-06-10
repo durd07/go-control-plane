@@ -9,8 +9,8 @@ package envoy_service_load_stats_v4alpha
 import (
 	context "context"
 	_ "github.com/cncf/xds/go/udpa/annotations"
-	v4alpha "github.com/envoyproxy/go-control-plane/envoy/config/core/v4alpha"
-	v3 "github.com/envoyproxy/go-control-plane/envoy/config/endpoint/v3"
+	v4alpha "github.com/durd07/go-control-plane/envoy/config/core/v4alpha"
+	v3 "github.com/durd07/go-control-plane/envoy/config/endpoint/v3"
 	proto "github.com/golang/protobuf/proto"
 	duration "github.com/golang/protobuf/ptypes/duration"
 	grpc "google.golang.org/grpc"

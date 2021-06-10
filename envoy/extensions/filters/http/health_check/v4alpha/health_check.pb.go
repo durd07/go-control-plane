@@ -8,8 +8,8 @@ package envoy_extensions_filters_http_health_check_v4alpha
 
 import (
 	_ "github.com/cncf/xds/go/udpa/annotations"
-	v4alpha "github.com/envoyproxy/go-control-plane/envoy/config/route/v4alpha"
-	v3 "github.com/envoyproxy/go-control-plane/envoy/type/v3"
+	v4alpha "github.com/durd07/go-control-plane/envoy/config/route/v4alpha"
+	v3 "github.com/durd07/go-control-plane/envoy/type/v3"
 	_ "github.com/envoyproxy/protoc-gen-validate/validate"
 	proto "github.com/golang/protobuf/proto"
 	duration "github.com/golang/protobuf/ptypes/duration"

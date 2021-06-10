@@ -9,8 +9,8 @@ package envoy_service_accesslog_v2
 import (
 	context "context"
 	_ "github.com/cncf/xds/go/udpa/annotations"
-	core "github.com/envoyproxy/go-control-plane/envoy/api/v2/core"
-	v2 "github.com/envoyproxy/go-control-plane/envoy/data/accesslog/v2"
+	core "github.com/durd07/go-control-plane/envoy/api/v2/core"
+	v2 "github.com/durd07/go-control-plane/envoy/data/accesslog/v2"
 	_ "github.com/envoyproxy/protoc-gen-validate/validate"
 	proto "github.com/golang/protobuf/proto"
 	grpc "google.golang.org/grpc"
