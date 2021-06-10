@@ -1,17 +1,15 @@
-module github.com/envoyproxy/go-control-plane
+module github.com/durd07/go-control-plane
 
-go 1.11
+go 1.16
 
 require (
-	github.com/census-instrumentation/opencensus-proto v0.2.1
-	github.com/cncf/xds/go v0.0.0-20210312221358-fbca930ec8ed
-	github.com/envoyproxy/protoc-gen-validate v0.1.0
-	github.com/golang/protobuf v1.4.3
-	github.com/google/go-cmp v0.5.0
-	github.com/prometheus/client_model v0.0.0-20190812154241-14fe0d1b01d4
-	github.com/stretchr/testify v1.5.1
-	go.opentelemetry.io/proto/otlp v0.7.0
-	google.golang.org/genproto v0.0.0-20200526211855-cb27e3aa2013
-	google.golang.org/grpc v1.36.0
-	google.golang.org/protobuf v1.25.0
+	github.com/census-instrumentation/opencensus-proto v0.3.0
+	github.com/cncf/xds/go v0.0.0-20210323124008-b88cc788a63e
+	github.com/envoyproxy/protoc-gen-validate v0.6.1
+	github.com/golang/protobuf v1.5.2
+	github.com/prometheus/client_model v0.2.0
+	go.opentelemetry.io/proto/otlp v0.9.0
+	google.golang.org/genproto v0.0.0-20210610141715-e7a9b787a5a4
+	google.golang.org/grpc v1.38.0
+	google.golang.org/protobuf v1.26.0
 )

@@ -17,7 +17,7 @@ import (
 
 	"github.com/golang/protobuf/ptypes"
 
-	v3 "github.com/envoyproxy/go-control-plane/envoy/config/core/v3"
+	v3 "github.com/durd07/go-control-plane/envoy/config/core/v3"
 )
 
 // ensure the imports are used
@@ -78,8 +78,6 @@ func (m *MetricsServiceConfig) Validate() error {
 			}
 		}
 	}
-
-	// no validation rules for EmitTagsAsLabels
 
 	return nil
 }

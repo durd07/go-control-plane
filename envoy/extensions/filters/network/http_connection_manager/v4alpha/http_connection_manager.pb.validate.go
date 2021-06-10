@@ -146,10 +146,10 @@ func (m *HttpConnectionManager) Validate() error {
 
 	if wrapper := m.GetMaxRequestHeadersKb(); wrapper != nil {
 
-		if val := wrapper.GetValue(); val <= 0 || val > 8192 {
+		if val := wrapper.GetValue(); val <= 0 || val > 96 {
 			return HttpConnectionManagerValidationError{
 				field:  "MaxRequestHeadersKb",
-				reason: "value must be inside range (0, 8192]",
+				reason: "value must be inside range (0, 96]",
 			}
 		}
 
@@ -241,22 +241,7 @@ func (m *HttpConnectionManager) Validate() error {
 		}
 	}
 
-	// no validation rules for HiddenEnvoyDeprecatedXffNumTrustedHops
-
-	for idx, item := range m.GetOriginalIpDetectionExtensions() {
-		_, _ = idx, item
-
-		if v, ok := interface{}(item).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return HttpConnectionManagerValidationError{
-					field:  fmt.Sprintf("OriginalIpDetectionExtensions[%v]", idx),
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
-			}
-		}
-
-	}
+	// no validation rules for XffNumTrustedHops
 
 	if v, ok := interface{}(m.GetInternalAddressConfig()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
