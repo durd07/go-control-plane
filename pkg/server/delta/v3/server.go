@@ -3,9 +3,9 @@ package delta
 import (
 	"context"
 
-	discovery "github.com/envoyproxy/go-control-plane/envoy/service/discovery/v3"
-	"github.com/envoyproxy/go-control-plane/pkg/cache/v3"
-	"github.com/envoyproxy/go-control-plane/pkg/server/stream/v3"
+	discovery "github.com/durd07/go-control-plane/envoy/service/discovery/v3"
+	"github.com/durd07/go-control-plane/pkg/cache/v3"
+	"github.com/durd07/go-control-plane/pkg/server/stream/v3"
 )
 
 // Server is a wrapper interface which is meant to hold the proper stream handler for each xDS protocol.

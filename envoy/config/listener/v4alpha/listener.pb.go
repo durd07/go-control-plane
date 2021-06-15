@@ -9,9 +9,9 @@ package envoy_config_listener_v4alpha
 import (
 	_ "github.com/cncf/xds/go/udpa/annotations"
 	v3 "github.com/cncf/xds/go/xds/core/v3"
-	_ "github.com/envoyproxy/go-control-plane/envoy/annotations"
-	v4alpha1 "github.com/envoyproxy/go-control-plane/envoy/config/accesslog/v4alpha"
-	v4alpha "github.com/envoyproxy/go-control-plane/envoy/config/core/v4alpha"
+	_ "github.com/durd07/go-control-plane/envoy/annotations"
+	v4alpha1 "github.com/durd07/go-control-plane/envoy/config/accesslog/v4alpha"
+	v4alpha "github.com/durd07/go-control-plane/envoy/config/core/v4alpha"
 	_ "github.com/envoyproxy/protoc-gen-validate/validate"
 	proto "github.com/golang/protobuf/proto"
 	duration "github.com/golang/protobuf/ptypes/duration"

@@ -7,12 +7,12 @@ import (
 	"github.com/golang/protobuf/ptypes/any"
 	"github.com/stretchr/testify/assert"
 
-	route "github.com/envoyproxy/go-control-plane/envoy/config/route/v3"
-	discovery "github.com/envoyproxy/go-control-plane/envoy/service/discovery/v3"
-	"github.com/envoyproxy/go-control-plane/pkg/cache/types"
-	"github.com/envoyproxy/go-control-plane/pkg/cache/v3"
-	"github.com/envoyproxy/go-control-plane/pkg/resource/v3"
-	ttl_helper "github.com/envoyproxy/go-control-plane/pkg/ttl/v3"
+	route "github.com/durd07/go-control-plane/envoy/config/route/v3"
+	discovery "github.com/durd07/go-control-plane/envoy/service/discovery/v3"
+	"github.com/durd07/go-control-plane/pkg/cache/types"
+	"github.com/durd07/go-control-plane/pkg/cache/v3"
+	"github.com/durd07/go-control-plane/pkg/resource/v3"
+	ttl_helper "github.com/durd07/go-control-plane/pkg/ttl/v3"
 )
 
 const (

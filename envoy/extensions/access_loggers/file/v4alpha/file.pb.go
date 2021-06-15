@@ -8,8 +8,8 @@ package envoy_extensions_access_loggers_file_v4alpha
 
 import (
 	_ "github.com/cncf/xds/go/udpa/annotations"
-	_ "github.com/envoyproxy/go-control-plane/envoy/annotations"
-	v4alpha "github.com/envoyproxy/go-control-plane/envoy/config/core/v4alpha"
+	_ "github.com/durd07/go-control-plane/envoy/annotations"
+	v4alpha "github.com/durd07/go-control-plane/envoy/config/core/v4alpha"
 	_ "github.com/envoyproxy/protoc-gen-validate/validate"
 	proto "github.com/golang/protobuf/proto"
 	_struct "github.com/golang/protobuf/ptypes/struct"

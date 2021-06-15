@@ -8,8 +8,8 @@ package envoy_admin_v3
 
 import (
 	_ "github.com/cncf/xds/go/udpa/annotations"
-	_ "github.com/envoyproxy/go-control-plane/envoy/annotations"
-	v3 "github.com/envoyproxy/go-control-plane/envoy/config/core/v3"
+	_ "github.com/durd07/go-control-plane/envoy/annotations"
+	v3 "github.com/durd07/go-control-plane/envoy/config/core/v3"
 	proto "github.com/golang/protobuf/proto"
 	duration "github.com/golang/protobuf/ptypes/duration"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"

@@ -9,9 +9,9 @@ package envoy_service_ext_proc_v3alpha
 import (
 	context "context"
 	_ "github.com/cncf/xds/go/udpa/annotations"
-	v3 "github.com/envoyproxy/go-control-plane/envoy/config/core/v3"
-	v3alpha "github.com/envoyproxy/go-control-plane/envoy/extensions/filters/http/ext_proc/v3alpha"
-	v31 "github.com/envoyproxy/go-control-plane/envoy/type/v3"
+	v3 "github.com/durd07/go-control-plane/envoy/config/core/v3"
+	v3alpha "github.com/durd07/go-control-plane/envoy/extensions/filters/http/ext_proc/v3alpha"
+	v31 "github.com/durd07/go-control-plane/envoy/type/v3"
 	_ "github.com/envoyproxy/protoc-gen-validate/validate"
 	proto "github.com/golang/protobuf/proto"
 	_struct "github.com/golang/protobuf/ptypes/struct"

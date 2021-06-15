@@ -8,8 +8,8 @@ package envoy_extensions_filters_network_thrift_proxy_v3
 
 import (
 	_ "github.com/cncf/xds/go/udpa/annotations"
-	v31 "github.com/envoyproxy/go-control-plane/envoy/config/core/v3"
-	v3 "github.com/envoyproxy/go-control-plane/envoy/config/route/v3"
+	v31 "github.com/durd07/go-control-plane/envoy/config/core/v3"
+	v3 "github.com/durd07/go-control-plane/envoy/config/route/v3"
 	_ "github.com/envoyproxy/protoc-gen-validate/validate"
 	proto "github.com/golang/protobuf/proto"
 	wrappers "github.com/golang/protobuf/ptypes/wrappers"

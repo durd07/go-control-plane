@@ -8,9 +8,9 @@ package envoy_admin_v4alpha
 
 import (
 	_ "github.com/cncf/xds/go/udpa/annotations"
-	v4alpha "github.com/envoyproxy/go-control-plane/envoy/config/cluster/v4alpha"
-	v4alpha1 "github.com/envoyproxy/go-control-plane/envoy/config/core/v4alpha"
-	v3 "github.com/envoyproxy/go-control-plane/envoy/type/v3"
+	v4alpha "github.com/durd07/go-control-plane/envoy/config/cluster/v4alpha"
+	v4alpha1 "github.com/durd07/go-control-plane/envoy/config/core/v4alpha"
+	v3 "github.com/durd07/go-control-plane/envoy/type/v3"
 	proto "github.com/golang/protobuf/proto"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"

@@ -8,7 +8,7 @@ package envoy_extensions_access_loggers_open_telemetry_v3alpha
 
 import (
 	_ "github.com/cncf/xds/go/udpa/annotations"
-	v3 "github.com/envoyproxy/go-control-plane/envoy/extensions/access_loggers/grpc/v3"
+	v3 "github.com/durd07/go-control-plane/envoy/extensions/access_loggers/grpc/v3"
 	_ "github.com/envoyproxy/protoc-gen-validate/validate"
 	proto "github.com/golang/protobuf/proto"
 	v1 "go.opentelemetry.io/proto/otlp/common/v1"

@@ -9,8 +9,8 @@ package envoy_service_auth_v2
 import (
 	context "context"
 	_ "github.com/cncf/xds/go/udpa/annotations"
-	core "github.com/envoyproxy/go-control-plane/envoy/api/v2/core"
-	_type "github.com/envoyproxy/go-control-plane/envoy/type"
+	core "github.com/durd07/go-control-plane/envoy/api/v2/core"
+	_type "github.com/durd07/go-control-plane/envoy/type"
 	_ "github.com/envoyproxy/protoc-gen-validate/validate"
 	proto "github.com/golang/protobuf/proto"
 	status "google.golang.org/genproto/googleapis/rpc/status"

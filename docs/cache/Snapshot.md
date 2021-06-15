@@ -15,7 +15,7 @@ cache := cachev3.NewSnapshotCache(false, cachev3.IDHash{}, logger)
 
 The `IDHash{}` struct is requested by the cache to use when mapping snapshots to nodes. If no hashing function is present, it will simply use the Envoy node ID as the key within the cache map.
 
-We have defined a `logger` interface which enables us to log at different levels within the source. Please refer to the [godoc](https://godoc.org/github.com/envoyproxy/go-control-plane/pkg/log) on what 
+We have defined a `logger` interface which enables us to log at different levels within the source. Please refer to the [godoc](https://godoc.org/github.com/durd07/go-control-plane/pkg/log) on what 
 functions to implement when creating the logger.
 
 > *NOTE*: This cache will need high level access within your management server as it is the source of truth for all configuration.
@@ -36,7 +36,7 @@ snapshot := cache.NewSnapshot(
 )
 ```
 
-For a more in-depth example on how to genereate a snapshot programmatically, explore how we create a generated snapshot in the integration test found [here](https://github.com/envoyproxy/go-control-plane/blob/master/pkg/test/resource/v2/resource.go#L317).
+For a more in-depth example on how to genereate a snapshot programmatically, explore how we create a generated snapshot in the integration test found [here](https://github.com/durd07/go-control-plane/blob/master/pkg/test/resource/v2/resource.go#L317).
 
 > *NOTE*: Not all resources are required to generate a configuration snapshot as it can be a partial.
 

@@ -8,7 +8,7 @@ package envoy_config_filter_http_rbac_v2
 
 import (
 	_ "github.com/cncf/xds/go/udpa/annotations"
-	v2 "github.com/envoyproxy/go-control-plane/envoy/config/rbac/v2"
+	v2 "github.com/durd07/go-control-plane/envoy/config/rbac/v2"
 	proto "github.com/golang/protobuf/proto"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
