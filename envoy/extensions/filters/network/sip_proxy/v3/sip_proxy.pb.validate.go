@@ -315,6 +315,8 @@ func (m *SipProxy_SipSettings) Validate() error {
 		}
 	}
 
+	// no validation rules for EpInsert
+
 	return nil
 }
 
