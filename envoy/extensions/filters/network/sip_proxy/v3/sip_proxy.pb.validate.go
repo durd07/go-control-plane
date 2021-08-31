@@ -315,7 +315,9 @@ func (m *SipProxy_SipSettings) Validate() error {
 		}
 	}
 
-	// no validation rules for EpInsert
+	// no validation rules for OwnDomain
+
+	// no validation rules for DomainMatchParameterName
 
 	return nil
 }
