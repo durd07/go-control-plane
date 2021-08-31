@@ -33,9 +33,6 @@ var (
 	_ = ptypes.DynamicAny{}
 )
 
-// define the regex for a UUID once up-front
-var _route_uuidPattern = regexp.MustCompile("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")
-
 // Validate checks the field values on RouteConfiguration with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, an error is returned.
@@ -225,23 +222,6 @@ func (m *RouteMatch) Validate() error {
 		return nil
 	}
 
-	// no validation rules for Invert
-
-	for idx, item := range m.GetHeaders() {
-		_, _ = idx, item
-
-		if v, ok := interface{}(item).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return RouteMatchValidationError{
-					field:  fmt.Sprintf("Headers[%v]", idx),
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
-			}
-		}
-
-	}
-
 	switch m.MatchSpecifier.(type) {
 
 	case *RouteMatch_Domain:
@@ -320,33 +300,6 @@ func (m *RouteAction) Validate() error {
 		return nil
 	}
 
-	if v, ok := interface{}(m.GetMetadataMatch()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return RouteActionValidationError{
-				field:  "MetadataMatch",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
-
-	for idx, item := range m.GetRateLimits() {
-		_, _ = idx, item
-
-		if v, ok := interface{}(item).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return RouteActionValidationError{
-					field:  fmt.Sprintf("RateLimits[%v]", idx),
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
-			}
-		}
-
-	}
-
-	// no validation rules for StripServiceName
-
 	switch m.ClusterSpecifier.(type) {
 
 	case *RouteAction_Cluster:
@@ -355,22 +308,6 @@ func (m *RouteAction) Validate() error {
 			return RouteActionValidationError{
 				field:  "Cluster",
 				reason: "value length must be at least 1 runes",
-			}
-		}
-
-	case *RouteAction_ClusterHeader:
-
-		if utf8.RuneCountInString(m.GetClusterHeader()) < 1 {
-			return RouteActionValidationError{
-				field:  "ClusterHeader",
-				reason: "value length must be at least 1 runes",
-			}
-		}
-
-		if !_RouteAction_ClusterHeader_Pattern.MatchString(m.GetClusterHeader()) {
-			return RouteActionValidationError{
-				field:  "ClusterHeader",
-				reason: "value does not match regex pattern \"^[^\\x00\\n\\r]*$\"",
 			}
 		}
 
@@ -438,5 +375,3 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = RouteActionValidationError{}
-
-var _RouteAction_ClusterHeader_Pattern = regexp.MustCompile("^[^\x00\n\r]*$")

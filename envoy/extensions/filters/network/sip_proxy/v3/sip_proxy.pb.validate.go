@@ -33,9 +33,6 @@ var (
 	_ = ptypes.DynamicAny{}
 )
 
-// define the regex for a UUID once up-front
-var _sip_proxy_uuidPattern = regexp.MustCompile("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")
-
 // Validate checks the field values on SipProxy with the rules defined in the
 // proto definition for this message. If any rules are violated, an error is returned.
 func (m *SipProxy) Validate() error {
@@ -237,6 +234,10 @@ func (m *SipProtocolOptions) Validate() error {
 		return nil
 	}
 
+	// no validation rules for SessionAffinity
+
+	// no validation rules for RegistrationAffinity
+
 	return nil
 }
 
@@ -304,14 +305,19 @@ func (m *SipProxy_SipSettings) Validate() error {
 		return nil
 	}
 
-	if m.GetTransactionTimeout() == nil {
-		return SipProxy_SipSettingsValidationError{
-			field:  "TransactionTimeout",
-			reason: "value is required",
+	if v, ok := interface{}(m.GetTransactionTimeout()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return SipProxy_SipSettingsValidationError{
+				field:  "TransactionTimeout",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
 		}
 	}
 
-	// no validation rules for SessionStickness
+	// no validation rules for OwnDomain
+
+	// no validation rules for DomainMatchParameterName
 
 	return nil
 }
