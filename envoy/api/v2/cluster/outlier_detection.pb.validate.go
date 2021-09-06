@@ -15,7 +15,7 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"google.golang.org/protobuf/types/known/anypb"
+	"github.com/golang/protobuf/ptypes"
 )
 
 // ensure the imports are used
@@ -30,7 +30,7 @@ var (
 	_ = time.Duration(0)
 	_ = (*url.URL)(nil)
 	_ = (*mail.Address)(nil)
-	_ = anypb.Any{}
+	_ = ptypes.DynamicAny{}
 )
 
 // Validate checks the field values on OutlierDetection with the rules defined
@@ -52,7 +52,7 @@ func (m *OutlierDetection) Validate() error {
 	}
 
 	if d := m.GetInterval(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return OutlierDetectionValidationError{
 				field:  "Interval",
@@ -73,7 +73,7 @@ func (m *OutlierDetection) Validate() error {
 	}
 
 	if d := m.GetBaseEjectionTime(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return OutlierDetectionValidationError{
 				field:  "BaseEjectionTime",

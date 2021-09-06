@@ -15,7 +15,7 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"google.golang.org/protobuf/types/known/anypb"
+	"github.com/golang/protobuf/ptypes"
 )
 
 // ensure the imports are used
@@ -30,7 +30,7 @@ var (
 	_ = time.Duration(0)
 	_ = (*url.URL)(nil)
 	_ = (*mail.Address)(nil)
-	_ = anypb.Any{}
+	_ = ptypes.DynamicAny{}
 )
 
 // Validate checks the field values on Bootstrap with the rules defined in the
@@ -118,7 +118,7 @@ func (m *Bootstrap) Validate() error {
 	}
 
 	if d := m.GetStatsFlushInterval(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return BootstrapValidationError{
 				field:  "StatsFlushInterval",

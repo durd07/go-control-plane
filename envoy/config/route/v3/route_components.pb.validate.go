@@ -15,7 +15,7 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"google.golang.org/protobuf/types/known/anypb"
+	"github.com/golang/protobuf/ptypes"
 
 	v3 "github.com/envoyproxy/go-control-plane/envoy/config/core/v3"
 )
@@ -32,7 +32,7 @@ var (
 	_ = time.Duration(0)
 	_ = (*url.URL)(nil)
 	_ = (*mail.Address)(nil)
-	_ = anypb.Any{}
+	_ = ptypes.DynamicAny{}
 
 	_ = v3.RoutingPriority(0)
 
@@ -665,18 +665,6 @@ func (m *Route) Validate() error {
 			}
 		}
 
-	case *Route_NonForwardingAction:
-
-		if v, ok := interface{}(m.GetNonForwardingAction()).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return RouteValidationError{
-					field:  "NonForwardingAction",
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
-			}
-		}
-
 	default:
 		return RouteValidationError{
 			field:  "Action",
@@ -921,21 +909,6 @@ func (m *RouteMatch) Validate() error {
 				cause:  err,
 			}
 		}
-	}
-
-	for idx, item := range m.GetDynamicMetadata() {
-		_, _ = idx, item
-
-		if v, ok := interface{}(item).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return RouteMatchValidationError{
-					field:  fmt.Sprintf("DynamicMetadata[%v]", idx),
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
-			}
-		}
-
 	}
 
 	switch m.PathSpecifier.(type) {
@@ -1477,9 +1450,6 @@ func (m *RouteAction) Validate() error {
 				}
 			}
 		}
-
-	case *RouteAction_ClusterSpecifierPlugin:
-		// no validation rules for ClusterSpecifierPlugin
 
 	default:
 		return RouteActionValidationError{
@@ -2069,73 +2039,6 @@ var _ interface {
 	ErrorName() string
 } = DirectResponseActionValidationError{}
 
-// Validate checks the field values on NonForwardingAction with the rules
-// defined in the proto definition for this message. If any rules are
-// violated, an error is returned.
-func (m *NonForwardingAction) Validate() error {
-	if m == nil {
-		return nil
-	}
-
-	return nil
-}
-
-// NonForwardingActionValidationError is the validation error returned by
-// NonForwardingAction.Validate if the designated constraints aren't met.
-type NonForwardingActionValidationError struct {
-	field  string
-	reason string
-	cause  error
-	key    bool
-}
-
-// Field function returns field value.
-func (e NonForwardingActionValidationError) Field() string { return e.field }
-
-// Reason function returns reason value.
-func (e NonForwardingActionValidationError) Reason() string { return e.reason }
-
-// Cause function returns cause value.
-func (e NonForwardingActionValidationError) Cause() error { return e.cause }
-
-// Key function returns key value.
-func (e NonForwardingActionValidationError) Key() bool { return e.key }
-
-// ErrorName returns error name.
-func (e NonForwardingActionValidationError) ErrorName() string {
-	return "NonForwardingActionValidationError"
-}
-
-// Error satisfies the builtin error interface
-func (e NonForwardingActionValidationError) Error() string {
-	cause := ""
-	if e.cause != nil {
-		cause = fmt.Sprintf(" | caused by: %v", e.cause)
-	}
-
-	key := ""
-	if e.key {
-		key = "key for "
-	}
-
-	return fmt.Sprintf(
-		"invalid %sNonForwardingAction.%s: %s%s",
-		key,
-		e.field,
-		e.reason,
-		cause)
-}
-
-var _ error = NonForwardingActionValidationError{}
-
-var _ interface {
-	Field() string
-	Reason() string
-	Key() bool
-	Cause() error
-	ErrorName() string
-} = NonForwardingActionValidationError{}
-
 // Validate checks the field values on Decorator with the rules defined in the
 // proto definition for this message. If any rules are violated, an error is returned.
 func (m *Decorator) Validate() error {
@@ -2614,18 +2517,6 @@ func (m *HeaderMatcher) Validate() error {
 			}
 		}
 
-	case *HeaderMatcher_StringMatch:
-
-		if v, ok := interface{}(m.GetStringMatch()).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return HeaderMatcherValidationError{
-					field:  "StringMatch",
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
-			}
-		}
-
 	case *HeaderMatcher_HiddenEnvoyDeprecatedRegexMatch:
 
 		if len(m.GetHiddenEnvoyDeprecatedRegexMatch()) > 1024 {
@@ -3001,12 +2892,10 @@ func (m *WeightedCluster_ClusterWeight) Validate() error {
 		return nil
 	}
 
-	// no validation rules for Name
-
-	if !_WeightedCluster_ClusterWeight_ClusterHeader_Pattern.MatchString(m.GetClusterHeader()) {
+	if utf8.RuneCountInString(m.GetName()) < 1 {
 		return WeightedCluster_ClusterWeightValidationError{
-			field:  "ClusterHeader",
-			reason: "value does not match regex pattern \"^[^\\x00\\n\\r]*$\"",
+			field:  "Name",
+			reason: "value length must be at least 1 runes",
 		}
 	}
 
@@ -3132,19 +3021,6 @@ func (m *WeightedCluster_ClusterWeight) Validate() error {
 
 	}
 
-	switch m.HostRewriteSpecifier.(type) {
-
-	case *WeightedCluster_ClusterWeight_HostRewriteLiteral:
-
-		if !_WeightedCluster_ClusterWeight_HostRewriteLiteral_Pattern.MatchString(m.GetHostRewriteLiteral()) {
-			return WeightedCluster_ClusterWeightValidationError{
-				field:  "HostRewriteLiteral",
-				reason: "value does not match regex pattern \"^[^\\x00\\n\\r]*$\"",
-			}
-		}
-
-	}
-
 	return nil
 }
 
@@ -3205,13 +3081,9 @@ var _ interface {
 	ErrorName() string
 } = WeightedCluster_ClusterWeightValidationError{}
 
-var _WeightedCluster_ClusterWeight_ClusterHeader_Pattern = regexp.MustCompile("^[^\x00\n\r]*$")
-
 var _WeightedCluster_ClusterWeight_RequestHeadersToRemove_Pattern = regexp.MustCompile("^[^\x00\n\r]*$")
 
 var _WeightedCluster_ClusterWeight_ResponseHeadersToRemove_Pattern = regexp.MustCompile("^[^\x00\n\r]*$")
-
-var _WeightedCluster_ClusterWeight_HostRewriteLiteral_Pattern = regexp.MustCompile("^[^\x00\n\r]*$")
 
 // Validate checks the field values on RouteMatch_GrpcRouteMatchOptions with
 // the rules defined in the proto definition for this message. If any rules
@@ -4575,7 +4447,7 @@ func (m *RetryPolicy_RetryBackOff) Validate() error {
 	}
 
 	if d := m.GetBaseInterval(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return RetryPolicy_RetryBackOffValidationError{
 				field:  "BaseInterval",
@@ -4596,7 +4468,7 @@ func (m *RetryPolicy_RetryBackOff) Validate() error {
 	}
 
 	if d := m.GetMaxInterval(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return RetryPolicy_RetryBackOffValidationError{
 				field:  "MaxInterval",
@@ -4796,7 +4668,7 @@ func (m *RetryPolicy_RateLimitedRetryBackOff) Validate() error {
 	}
 
 	if d := m.GetMaxInterval(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return RetryPolicy_RateLimitedRetryBackOffValidationError{
 				field:  "MaxInterval",

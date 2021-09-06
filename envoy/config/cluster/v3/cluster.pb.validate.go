@@ -15,7 +15,7 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"google.golang.org/protobuf/types/known/anypb"
+	"github.com/golang/protobuf/ptypes"
 )
 
 // ensure the imports are used
@@ -30,7 +30,7 @@ var (
 	_ = time.Duration(0)
 	_ = (*url.URL)(nil)
 	_ = (*mail.Address)(nil)
-	_ = anypb.Any{}
+	_ = ptypes.DynamicAny{}
 )
 
 // Validate checks the field values on ClusterCollection with the rules defined
@@ -152,7 +152,7 @@ func (m *Cluster) Validate() error {
 	}
 
 	if d := m.GetConnectTimeout(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return ClusterValidationError{
 				field:  "ConnectTimeout",
@@ -179,6 +179,13 @@ func (m *Cluster) Validate() error {
 				reason: "embedded message failed validation",
 				cause:  err,
 			}
+		}
+	}
+
+	if _, ok := _Cluster_LbPolicy_NotInLookup[m.GetLbPolicy()]; ok {
+		return ClusterValidationError{
+			field:  "LbPolicy",
+			reason: "value must not be in list [7]",
 		}
 	}
 
@@ -292,7 +299,7 @@ func (m *Cluster) Validate() error {
 	}
 
 	if d := m.GetDnsRefreshRate(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return ClusterValidationError{
 				field:  "DnsRefreshRate",
@@ -348,36 +355,6 @@ func (m *Cluster) Validate() error {
 
 	// no validation rules for UseTcpForDnsLookups
 
-	if v, ok := interface{}(m.GetDnsResolutionConfig()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return ClusterValidationError{
-				field:  "DnsResolutionConfig",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
-
-	if v, ok := interface{}(m.GetTypedDnsResolverConfig()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return ClusterValidationError{
-				field:  "TypedDnsResolverConfig",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
-
-	if v, ok := interface{}(m.GetWaitForWarmOnInit()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return ClusterValidationError{
-				field:  "WaitForWarmOnInit",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
-
 	if v, ok := interface{}(m.GetOutlierDetection()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
 			return ClusterValidationError{
@@ -389,7 +366,7 @@ func (m *Cluster) Validate() error {
 	}
 
 	if d := m.GetCleanupInterval(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return ClusterValidationError{
 				field:  "CleanupInterval",
@@ -719,6 +696,10 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = ClusterValidationError{}
+
+var _Cluster_LbPolicy_NotInLookup = map[Cluster_LbPolicy]struct{}{
+	7: {},
+}
 
 // Validate checks the field values on LoadBalancingPolicy with the rules
 // defined in the proto definition for this message. If any rules are
@@ -1585,15 +1566,14 @@ func (m *Cluster_MaglevLbConfig) Validate() error {
 		return nil
 	}
 
-	if wrapper := m.GetTableSize(); wrapper != nil {
-
-		if wrapper.GetValue() > 5000011 {
+	if v, ok := interface{}(m.GetTableSize()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
 			return Cluster_MaglevLbConfigValidationError{
 				field:  "TableSize",
-				reason: "value must be less than or equal to 5000011",
+				reason: "embedded message failed validation",
+				cause:  err,
 			}
 		}
-
 	}
 
 	return nil
@@ -1870,7 +1850,7 @@ func (m *Cluster_RefreshRate) Validate() error {
 	}
 
 	if d := m.GetBaseInterval(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return Cluster_RefreshRateValidationError{
 				field:  "BaseInterval",
@@ -1891,7 +1871,7 @@ func (m *Cluster_RefreshRate) Validate() error {
 	}
 
 	if d := m.GetMaxInterval(); d != nil {
-		dur, err := d.AsDuration(), d.CheckValid()
+		dur, err := ptypes.Duration(d)
 		if err != nil {
 			return Cluster_RefreshRateValidationError{
 				field:  "MaxInterval",
@@ -2397,10 +2377,12 @@ func (m *LoadBalancingPolicy_Policy) Validate() error {
 		return nil
 	}
 
-	if v, ok := interface{}(m.GetTypedExtensionConfig()).(interface{ Validate() error }); ok {
+	// no validation rules for Name
+
+	if v, ok := interface{}(m.GetTypedConfig()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
 			return LoadBalancingPolicy_PolicyValidationError{
-				field:  "TypedExtensionConfig",
+				field:  "TypedConfig",
 				reason: "embedded message failed validation",
 				cause:  err,
 			}

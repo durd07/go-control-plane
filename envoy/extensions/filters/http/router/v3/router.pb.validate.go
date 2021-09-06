@@ -15,7 +15,7 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"google.golang.org/protobuf/types/known/anypb"
+	"github.com/golang/protobuf/ptypes"
 )
 
 // ensure the imports are used
@@ -30,7 +30,7 @@ var (
 	_ = time.Duration(0)
 	_ = (*url.URL)(nil)
 	_ = (*mail.Address)(nil)
-	_ = anypb.Any{}
+	_ = ptypes.DynamicAny{}
 )
 
 // Validate checks the field values on Router with the rules defined in the
@@ -82,8 +82,6 @@ func (m *Router) Validate() error {
 	}
 
 	// no validation rules for RespectExpectedRqTimeout
-
-	// no validation rules for SuppressGrpcRequestFailureCodeStats
 
 	return nil
 }

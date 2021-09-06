@@ -15,7 +15,7 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"google.golang.org/protobuf/types/known/anypb"
+	"github.com/golang/protobuf/ptypes"
 )
 
 // ensure the imports are used
@@ -30,7 +30,7 @@ var (
 	_ = time.Duration(0)
 	_ = (*url.URL)(nil)
 	_ = (*mail.Address)(nil)
-	_ = anypb.Any{}
+	_ = ptypes.DynamicAny{}
 )
 
 // Validate checks the field values on UdpProxyConfig with the rules defined in
@@ -184,15 +184,6 @@ func (m *UdpProxyConfig_HashPolicy) Validate() error {
 			return UdpProxyConfig_HashPolicyValidationError{
 				field:  "SourceIp",
 				reason: "value must equal true",
-			}
-		}
-
-	case *UdpProxyConfig_HashPolicy_Key:
-
-		if utf8.RuneCountInString(m.GetKey()) < 1 {
-			return UdpProxyConfig_HashPolicyValidationError{
-				field:  "Key",
-				reason: "value length must be at least 1 runes",
 			}
 		}
 

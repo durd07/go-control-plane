@@ -15,7 +15,7 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"google.golang.org/protobuf/types/known/anypb"
+	"github.com/golang/protobuf/ptypes"
 )
 
 // ensure the imports are used
@@ -30,7 +30,7 @@ var (
 	_ = time.Duration(0)
 	_ = (*url.URL)(nil)
 	_ = (*mail.Address)(nil)
-	_ = anypb.Any{}
+	_ = ptypes.DynamicAny{}
 )
 
 // Validate checks the field values on Gzip with the rules defined in the proto
@@ -96,6 +96,20 @@ func (m *Gzip) Validate() error {
 		}
 
 	}
+
+	if v, ok := interface{}(m.GetHiddenEnvoyDeprecatedContentLength()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return GzipValidationError{
+				field:  "HiddenEnvoyDeprecatedContentLength",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	// no validation rules for HiddenEnvoyDeprecatedDisableOnEtagHeader
+
+	// no validation rules for HiddenEnvoyDeprecatedRemoveAcceptEncodingHeader
 
 	return nil
 }

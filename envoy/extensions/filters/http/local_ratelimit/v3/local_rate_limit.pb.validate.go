@@ -15,7 +15,7 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"google.golang.org/protobuf/types/known/anypb"
+	"github.com/golang/protobuf/ptypes"
 )
 
 // ensure the imports are used
@@ -30,7 +30,7 @@ var (
 	_ = time.Duration(0)
 	_ = (*url.URL)(nil)
 	_ = (*mail.Address)(nil)
-	_ = anypb.Any{}
+	_ = ptypes.DynamicAny{}
 )
 
 // Validate checks the field values on LocalRateLimit with the rules defined in
@@ -88,28 +88,6 @@ func (m *LocalRateLimit) Validate() error {
 		}
 	}
 
-	if len(m.GetRequestHeadersToAddWhenNotEnforced()) > 10 {
-		return LocalRateLimitValidationError{
-			field:  "RequestHeadersToAddWhenNotEnforced",
-			reason: "value must contain no more than 10 item(s)",
-		}
-	}
-
-	for idx, item := range m.GetRequestHeadersToAddWhenNotEnforced() {
-		_, _ = idx, item
-
-		if v, ok := interface{}(item).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return LocalRateLimitValidationError{
-					field:  fmt.Sprintf("RequestHeadersToAddWhenNotEnforced[%v]", idx),
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
-			}
-		}
-
-	}
-
 	if len(m.GetResponseHeadersToAdd()) > 10 {
 		return LocalRateLimitValidationError{
 			field:  "ResponseHeadersToAdd",
@@ -153,8 +131,6 @@ func (m *LocalRateLimit) Validate() error {
 			reason: "value must be less than or equal to 10",
 		}
 	}
-
-	// no validation rules for LocalRateLimitPerDownstreamConnection
 
 	return nil
 }

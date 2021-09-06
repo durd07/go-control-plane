@@ -15,7 +15,7 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"google.golang.org/protobuf/types/known/anypb"
+	"github.com/golang/protobuf/ptypes"
 
 	v3 "github.com/envoyproxy/go-control-plane/envoy/config/core/v3"
 )
@@ -32,7 +32,7 @@ var (
 	_ = time.Duration(0)
 	_ = (*url.URL)(nil)
 	_ = (*mail.Address)(nil)
-	_ = anypb.Any{}
+	_ = ptypes.DynamicAny{}
 
 	_ = v3.RequestMethod(0)
 )
@@ -614,8 +614,6 @@ func (m *ResponseFlags) Validate() error {
 	// no validation rules for UpstreamProtocolError
 
 	// no validation rules for NoClusterFound
-
-	// no validation rules for OverloadManager
 
 	return nil
 }

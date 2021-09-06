@@ -15,7 +15,7 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"google.golang.org/protobuf/types/known/anypb"
+	"github.com/golang/protobuf/ptypes"
 
 	v3 "github.com/envoyproxy/go-control-plane/envoy/config/core/v3"
 )
@@ -32,7 +32,7 @@ var (
 	_ = time.Duration(0)
 	_ = (*url.URL)(nil)
 	_ = (*mail.Address)(nil)
-	_ = anypb.Any{}
+	_ = ptypes.DynamicAny{}
 
 	_ = v3.ApiVersion(0)
 )
@@ -81,8 +81,6 @@ func (m *ExtAuthz) Validate() error {
 			}
 		}
 	}
-
-	// no validation rules for BootstrapMetadataLabelsKey
 
 	return nil
 }
