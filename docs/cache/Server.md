@@ -35,7 +35,7 @@ For a full in-depth example of this code, please view the integration test locat
 
 ### Callbacks
 
-All go-control-plane xDS servers require `Callback` methods to run properly. These callbacks are executed throughout certain steps of the xDS lifecycle. The Callback interface which must be implemented can be found [here](https://godoc.org/github.com/envoyproxy/go-control-plane/pkg/server/v2#Callbacks).
+All go-control-plane xDS servers require `Callback` methods to run properly. These callbacks are executed throughout certain steps of the xDS lifecycle. The Callback interface which must be implemented can be found [here](https://godoc.org/github.com/durd07/go-control-plane/pkg/server/v2#Callbacks).
 
 An example implemention of the Callback interface can be found below:
 ```go

@@ -8,7 +8,7 @@ package envoy_extensions_filters_network_sip_proxy_v3
 
 import (
 	_ "github.com/cncf/xds/go/udpa/annotations"
-	v3 "github.com/envoyproxy/go-control-plane/envoy/extensions/filters/network/sip_proxy/tra/v3"
+	v3 "github.com/durd07/go-control-plane/envoy/extensions/filters/network/sip_proxy/tra/v3"
 	_ "github.com/envoyproxy/protoc-gen-validate/validate"
 	proto "github.com/golang/protobuf/proto"
 	any "github.com/golang/protobuf/ptypes/any"

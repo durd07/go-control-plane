@@ -10,14 +10,14 @@ import (
 	"github.com/stretchr/testify/assert"
 	"google.golang.org/grpc"
 
-	envoy_config_core_v3 "github.com/envoyproxy/go-control-plane/envoy/config/core/v3"
-	envoy_config_endpoint_v3 "github.com/envoyproxy/go-control-plane/envoy/config/endpoint/v3"
-	envoy_service_discovery_v3 "github.com/envoyproxy/go-control-plane/envoy/service/discovery/v3"
-	endpointservice "github.com/envoyproxy/go-control-plane/envoy/service/endpoint/v3"
-	"github.com/envoyproxy/go-control-plane/pkg/cache/types"
-	"github.com/envoyproxy/go-control-plane/pkg/cache/v3"
-	"github.com/envoyproxy/go-control-plane/pkg/resource/v3"
-	"github.com/envoyproxy/go-control-plane/pkg/server/v3"
+	envoy_config_core_v3 "github.com/durd07/go-control-plane/envoy/config/core/v3"
+	envoy_config_endpoint_v3 "github.com/durd07/go-control-plane/envoy/config/endpoint/v3"
+	envoy_service_discovery_v3 "github.com/durd07/go-control-plane/envoy/service/discovery/v3"
+	endpointservice "github.com/durd07/go-control-plane/envoy/service/endpoint/v3"
+	"github.com/durd07/go-control-plane/pkg/cache/types"
+	"github.com/durd07/go-control-plane/pkg/cache/v3"
+	"github.com/durd07/go-control-plane/pkg/resource/v3"
+	"github.com/durd07/go-control-plane/pkg/server/v3"
 )
 
 type logger struct {

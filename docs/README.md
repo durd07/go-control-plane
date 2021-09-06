@@ -19,10 +19,10 @@ import (
     "google.golang.org/grpc"
     "google.golang.org/grpc/keepalive"
 
-    api "github.com/envoyproxy/go-control-plane/envoy/api/v2"
-    discovery "github.com/envoyproxy/go-control-plane/envoy/service/discovery/v2"
-    "github.com/envoyproxy/go-control-plane/pkg/cache/v2"
-    xds "github.com/envoyproxy/go-control-plane/pkg/server/v2"
+    api "github.com/durd07/go-control-plane/envoy/api/v2"
+    discovery "github.com/durd07/go-control-plane/envoy/service/discovery/v2"
+    "github.com/durd07/go-control-plane/pkg/cache/v2"
+    xds "github.com/durd07/go-control-plane/pkg/server/v2"
 )
 
 const (
@@ -63,13 +63,13 @@ func main() {
 }
 ```
 
-As mentioned in the README's [Scope](https://github.com/envoyproxy/go-control-plane/blob/master/README.md#scope), you need to cache Envoy configurations.
+As mentioned in the README's [Scope](https://github.com/durd07/go-control-plane/blob/master/README.md#scope), you need to cache Envoy configurations.
 Generate the key for the corresponding snapshot based on the node information provided from an Envoy node, then cache the configurations.
 
 ```go
 import (
-    "github.com/envoyproxy/go-control-plane/pkg/cache/v2"
-    "github.com/envoyproxy/go-control-plane/pkg/cache/types"
+    "github.com/durd07/go-control-plane/pkg/cache/v2"
+    "github.com/durd07/go-control-plane/pkg/cache/types"
 )
 
 var clusters, endpoints, routes, listeners, runtimes []types.Resource

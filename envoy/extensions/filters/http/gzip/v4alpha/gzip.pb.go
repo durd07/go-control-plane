@@ -8,7 +8,7 @@ package envoy_extensions_filters_http_gzip_v4alpha
 
 import (
 	_ "github.com/cncf/xds/go/udpa/annotations"
-	v4alpha "github.com/envoyproxy/go-control-plane/envoy/extensions/filters/http/compressor/v4alpha"
+	v4alpha "github.com/durd07/go-control-plane/envoy/extensions/filters/http/compressor/v4alpha"
 	_ "github.com/envoyproxy/protoc-gen-validate/validate"
 	proto "github.com/golang/protobuf/proto"
 	wrappers "github.com/golang/protobuf/ptypes/wrappers"

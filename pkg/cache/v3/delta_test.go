@@ -9,13 +9,13 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	core "github.com/envoyproxy/go-control-plane/envoy/config/core/v3"
-	discovery "github.com/envoyproxy/go-control-plane/envoy/service/discovery/v3"
-	"github.com/envoyproxy/go-control-plane/pkg/cache/types"
-	"github.com/envoyproxy/go-control-plane/pkg/cache/v3"
-	rsrc "github.com/envoyproxy/go-control-plane/pkg/resource/v3"
-	"github.com/envoyproxy/go-control-plane/pkg/server/stream/v3"
-	"github.com/envoyproxy/go-control-plane/pkg/test/resource/v3"
+	core "github.com/durd07/go-control-plane/envoy/config/core/v3"
+	discovery "github.com/durd07/go-control-plane/envoy/service/discovery/v3"
+	"github.com/durd07/go-control-plane/pkg/cache/types"
+	"github.com/durd07/go-control-plane/pkg/cache/v3"
+	rsrc "github.com/durd07/go-control-plane/pkg/resource/v3"
+	"github.com/durd07/go-control-plane/pkg/server/stream/v3"
+	"github.com/durd07/go-control-plane/pkg/test/resource/v3"
 )
 
 func TestSnapshotCacheDeltaWatch(t *testing.T) {

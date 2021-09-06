@@ -8,11 +8,11 @@ package envoy_config_accesslog_v3
 
 import (
 	_ "github.com/cncf/xds/go/udpa/annotations"
-	_ "github.com/envoyproxy/go-control-plane/envoy/annotations"
-	v3 "github.com/envoyproxy/go-control-plane/envoy/config/core/v3"
-	v32 "github.com/envoyproxy/go-control-plane/envoy/config/route/v3"
-	v33 "github.com/envoyproxy/go-control-plane/envoy/type/matcher/v3"
-	v31 "github.com/envoyproxy/go-control-plane/envoy/type/v3"
+	_ "github.com/durd07/go-control-plane/envoy/annotations"
+	v3 "github.com/durd07/go-control-plane/envoy/config/core/v3"
+	v32 "github.com/durd07/go-control-plane/envoy/config/route/v3"
+	v33 "github.com/durd07/go-control-plane/envoy/type/matcher/v3"
+	v31 "github.com/durd07/go-control-plane/envoy/type/v3"
 	_ "github.com/envoyproxy/protoc-gen-validate/validate"
 	proto "github.com/golang/protobuf/proto"
 	any "github.com/golang/protobuf/ptypes/any"
