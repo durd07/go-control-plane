@@ -319,6 +319,16 @@ func (m *SipProxy_SipSettings) Validate() error {
 
 	// no validation rules for DomainMatchParameterName
 
+	if v, ok := interface{}(m.GetTraServiceConfig()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return SipProxy_SipSettingsValidationError{
+				field:  "TraServiceConfig",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
 	return nil
 }
 
