@@ -21,7 +21,7 @@ linters-settings:
   unparam:
     check-exported: false
   goimports:
-    local-prefixes: github.com/envoyproxy/go-control-plane
+    local-prefixes: github.com/durd07/go-control-plane
 
 issues:
   exclude:
