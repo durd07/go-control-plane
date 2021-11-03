@@ -146,6 +146,18 @@ func (m *TraServiceRequest) Validate() error {
 
 	switch m.Request.(type) {
 
+	case *TraServiceRequest_CreateLskpmcRequest:
+
+		if v, ok := interface{}(m.GetCreateLskpmcRequest()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return TraServiceRequestValidationError{
+					field:  "CreateLskpmcRequest",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
 	case *TraServiceRequest_UpdateLskpmcRequest:
 
 		if v, ok := interface{}(m.GetUpdateLskpmcRequest()).(interface{ Validate() error }); ok {
@@ -158,24 +170,96 @@ func (m *TraServiceRequest) Validate() error {
 			}
 		}
 
-	case *TraServiceRequest_GetIpFromLskpmcRequest:
+	case *TraServiceRequest_RetrieveLskpmcRequest:
 
-		if v, ok := interface{}(m.GetGetIpFromLskpmcRequest()).(interface{ Validate() error }); ok {
+		if v, ok := interface{}(m.GetRetrieveLskpmcRequest()).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
 				return TraServiceRequestValidationError{
-					field:  "GetIpFromLskpmcRequest",
+					field:  "RetrieveLskpmcRequest",
 					reason: "embedded message failed validation",
 					cause:  err,
 				}
 			}
 		}
 
-	case *TraServiceRequest_SubscribeRequest:
+	case *TraServiceRequest_DeleteLskpmcRequest:
 
-		if v, ok := interface{}(m.GetSubscribeRequest()).(interface{ Validate() error }); ok {
+		if v, ok := interface{}(m.GetDeleteLskpmcRequest()).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
 				return TraServiceRequestValidationError{
-					field:  "SubscribeRequest",
+					field:  "DeleteLskpmcRequest",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	case *TraServiceRequest_SubscribeLskpmcRequest:
+
+		if v, ok := interface{}(m.GetSubscribeLskpmcRequest()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return TraServiceRequestValidationError{
+					field:  "SubscribeLskpmcRequest",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	case *TraServiceRequest_CreateXafiRequest:
+
+		if v, ok := interface{}(m.GetCreateXafiRequest()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return TraServiceRequestValidationError{
+					field:  "CreateXafiRequest",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	case *TraServiceRequest_UpdateXafiRequest:
+
+		if v, ok := interface{}(m.GetUpdateXafiRequest()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return TraServiceRequestValidationError{
+					field:  "UpdateXafiRequest",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	case *TraServiceRequest_RetrieveXafiRequest:
+
+		if v, ok := interface{}(m.GetRetrieveXafiRequest()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return TraServiceRequestValidationError{
+					field:  "RetrieveXafiRequest",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	case *TraServiceRequest_DeleteXafiRequest:
+
+		if v, ok := interface{}(m.GetDeleteXafiRequest()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return TraServiceRequestValidationError{
+					field:  "DeleteXafiRequest",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	case *TraServiceRequest_SubscribeXafiRequest:
+
+		if v, ok := interface{}(m.GetSubscribeXafiRequest()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return TraServiceRequestValidationError{
+					field:  "SubscribeXafiRequest",
 					reason: "embedded message failed validation",
 					cause:  err,
 				}
@@ -251,7 +335,23 @@ func (m *TraServiceResponse) Validate() error {
 		return nil
 	}
 
+	// no validation rules for Ret
+
+	// no validation rules for Reason
+
 	switch m.Response.(type) {
+
+	case *TraServiceResponse_CreateLskpmcResponse:
+
+		if v, ok := interface{}(m.GetCreateLskpmcResponse()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return TraServiceResponseValidationError{
+					field:  "CreateLskpmcResponse",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
 
 	case *TraServiceResponse_UpdateLskpmcResponse:
 
@@ -265,24 +365,96 @@ func (m *TraServiceResponse) Validate() error {
 			}
 		}
 
-	case *TraServiceResponse_GetIpFromLskpmcResponse:
+	case *TraServiceResponse_RetrieveLskpmcResponse:
 
-		if v, ok := interface{}(m.GetGetIpFromLskpmcResponse()).(interface{ Validate() error }); ok {
+		if v, ok := interface{}(m.GetRetrieveLskpmcResponse()).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
 				return TraServiceResponseValidationError{
-					field:  "GetIpFromLskpmcResponse",
+					field:  "RetrieveLskpmcResponse",
 					reason: "embedded message failed validation",
 					cause:  err,
 				}
 			}
 		}
 
-	case *TraServiceResponse_SubscribeResponse:
+	case *TraServiceResponse_DeleteLskpmcResponse:
 
-		if v, ok := interface{}(m.GetSubscribeResponse()).(interface{ Validate() error }); ok {
+		if v, ok := interface{}(m.GetDeleteLskpmcResponse()).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
 				return TraServiceResponseValidationError{
-					field:  "SubscribeResponse",
+					field:  "DeleteLskpmcResponse",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	case *TraServiceResponse_SubscribeLskpmcResponse:
+
+		if v, ok := interface{}(m.GetSubscribeLskpmcResponse()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return TraServiceResponseValidationError{
+					field:  "SubscribeLskpmcResponse",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	case *TraServiceResponse_CreateXafiResponse:
+
+		if v, ok := interface{}(m.GetCreateXafiResponse()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return TraServiceResponseValidationError{
+					field:  "CreateXafiResponse",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	case *TraServiceResponse_UpdateXafiResponse:
+
+		if v, ok := interface{}(m.GetUpdateXafiResponse()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return TraServiceResponseValidationError{
+					field:  "UpdateXafiResponse",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	case *TraServiceResponse_RetrieveXafiResponse:
+
+		if v, ok := interface{}(m.GetRetrieveXafiResponse()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return TraServiceResponseValidationError{
+					field:  "RetrieveXafiResponse",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	case *TraServiceResponse_DeleteXafiResponse:
+
+		if v, ok := interface{}(m.GetDeleteXafiResponse()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return TraServiceResponseValidationError{
+					field:  "DeleteXafiResponse",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	case *TraServiceResponse_SubscribeXafiResponse:
+
+		if v, ok := interface{}(m.GetSubscribeXafiResponse()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return TraServiceResponseValidationError{
+					field:  "SubscribeXafiResponse",
 					reason: "embedded message failed validation",
 					cause:  err,
 				}
@@ -350,6 +522,142 @@ var _ interface {
 	ErrorName() string
 } = TraServiceResponseValidationError{}
 
+// Validate checks the field values on CreateLskpmcRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *CreateLskpmcRequest) Validate() error {
+	if m == nil {
+		return nil
+	}
+
+	// no validation rules for Lskpmcs
+
+	return nil
+}
+
+// CreateLskpmcRequestValidationError is the validation error returned by
+// CreateLskpmcRequest.Validate if the designated constraints aren't met.
+type CreateLskpmcRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e CreateLskpmcRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e CreateLskpmcRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e CreateLskpmcRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e CreateLskpmcRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e CreateLskpmcRequestValidationError) ErrorName() string {
+	return "CreateLskpmcRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e CreateLskpmcRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sCreateLskpmcRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = CreateLskpmcRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = CreateLskpmcRequestValidationError{}
+
+// Validate checks the field values on CreateLskpmcResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *CreateLskpmcResponse) Validate() error {
+	if m == nil {
+		return nil
+	}
+
+	return nil
+}
+
+// CreateLskpmcResponseValidationError is the validation error returned by
+// CreateLskpmcResponse.Validate if the designated constraints aren't met.
+type CreateLskpmcResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e CreateLskpmcResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e CreateLskpmcResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e CreateLskpmcResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e CreateLskpmcResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e CreateLskpmcResponseValidationError) ErrorName() string {
+	return "CreateLskpmcResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e CreateLskpmcResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sCreateLskpmcResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = CreateLskpmcResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = CreateLskpmcResponseValidationError{}
+
 // Validate checks the field values on UpdateLskpmcRequest with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, an error is returned.
@@ -358,15 +666,7 @@ func (m *UpdateLskpmcRequest) Validate() error {
 		return nil
 	}
 
-	if v, ok := interface{}(m.GetLskpmc()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return UpdateLskpmcRequestValidationError{
-				field:  "Lskpmc",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for Lskpmcs
 
 	return nil
 }
@@ -435,8 +735,6 @@ func (m *UpdateLskpmcResponse) Validate() error {
 		return nil
 	}
 
-	// no validation rules for Ret
-
 	return nil
 }
 
@@ -496,22 +794,22 @@ var _ interface {
 	ErrorName() string
 } = UpdateLskpmcResponseValidationError{}
 
-// Validate checks the field values on GetIpFromLskpmcRequest with the rules
+// Validate checks the field values on RetrieveLskpmcRequest with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, an error is returned.
-func (m *GetIpFromLskpmcRequest) Validate() error {
+func (m *RetrieveLskpmcRequest) Validate() error {
 	if m == nil {
 		return nil
 	}
 
-	// no validation rules for Key
+	// no validation rules for Lskpmc
 
 	return nil
 }
 
-// GetIpFromLskpmcRequestValidationError is the validation error returned by
-// GetIpFromLskpmcRequest.Validate if the designated constraints aren't met.
-type GetIpFromLskpmcRequestValidationError struct {
+// RetrieveLskpmcRequestValidationError is the validation error returned by
+// RetrieveLskpmcRequest.Validate if the designated constraints aren't met.
+type RetrieveLskpmcRequestValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -519,24 +817,24 @@ type GetIpFromLskpmcRequestValidationError struct {
 }
 
 // Field function returns field value.
-func (e GetIpFromLskpmcRequestValidationError) Field() string { return e.field }
+func (e RetrieveLskpmcRequestValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e GetIpFromLskpmcRequestValidationError) Reason() string { return e.reason }
+func (e RetrieveLskpmcRequestValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e GetIpFromLskpmcRequestValidationError) Cause() error { return e.cause }
+func (e RetrieveLskpmcRequestValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e GetIpFromLskpmcRequestValidationError) Key() bool { return e.key }
+func (e RetrieveLskpmcRequestValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e GetIpFromLskpmcRequestValidationError) ErrorName() string {
-	return "GetIpFromLskpmcRequestValidationError"
+func (e RetrieveLskpmcRequestValidationError) ErrorName() string {
+	return "RetrieveLskpmcRequestValidationError"
 }
 
 // Error satisfies the builtin error interface
-func (e GetIpFromLskpmcRequestValidationError) Error() string {
+func (e RetrieveLskpmcRequestValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -548,14 +846,14 @@ func (e GetIpFromLskpmcRequestValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sGetIpFromLskpmcRequest.%s: %s%s",
+		"invalid %sRetrieveLskpmcRequest.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = GetIpFromLskpmcRequestValidationError{}
+var _ error = RetrieveLskpmcRequestValidationError{}
 
 var _ interface {
 	Field() string
@@ -563,24 +861,24 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = GetIpFromLskpmcRequestValidationError{}
+} = RetrieveLskpmcRequestValidationError{}
 
-// Validate checks the field values on GetIpFromLskpmcResponse with the rules
+// Validate checks the field values on RetrieveLskpmcResponse with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, an error is returned.
-func (m *GetIpFromLskpmcResponse) Validate() error {
+func (m *RetrieveLskpmcResponse) Validate() error {
 	if m == nil {
 		return nil
 	}
 
-	// no validation rules for Ip
+	// no validation rules for Lskpmcs
 
 	return nil
 }
 
-// GetIpFromLskpmcResponseValidationError is the validation error returned by
-// GetIpFromLskpmcResponse.Validate if the designated constraints aren't met.
-type GetIpFromLskpmcResponseValidationError struct {
+// RetrieveLskpmcResponseValidationError is the validation error returned by
+// RetrieveLskpmcResponse.Validate if the designated constraints aren't met.
+type RetrieveLskpmcResponseValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -588,24 +886,24 @@ type GetIpFromLskpmcResponseValidationError struct {
 }
 
 // Field function returns field value.
-func (e GetIpFromLskpmcResponseValidationError) Field() string { return e.field }
+func (e RetrieveLskpmcResponseValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e GetIpFromLskpmcResponseValidationError) Reason() string { return e.reason }
+func (e RetrieveLskpmcResponseValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e GetIpFromLskpmcResponseValidationError) Cause() error { return e.cause }
+func (e RetrieveLskpmcResponseValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e GetIpFromLskpmcResponseValidationError) Key() bool { return e.key }
+func (e RetrieveLskpmcResponseValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e GetIpFromLskpmcResponseValidationError) ErrorName() string {
-	return "GetIpFromLskpmcResponseValidationError"
+func (e RetrieveLskpmcResponseValidationError) ErrorName() string {
+	return "RetrieveLskpmcResponseValidationError"
 }
 
 // Error satisfies the builtin error interface
-func (e GetIpFromLskpmcResponseValidationError) Error() string {
+func (e RetrieveLskpmcResponseValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -617,14 +915,14 @@ func (e GetIpFromLskpmcResponseValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sGetIpFromLskpmcResponse.%s: %s%s",
+		"invalid %sRetrieveLskpmcResponse.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = GetIpFromLskpmcResponseValidationError{}
+var _ error = RetrieveLskpmcResponseValidationError{}
 
 var _ interface {
 	Field() string
@@ -632,22 +930,296 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = GetIpFromLskpmcResponseValidationError{}
+} = RetrieveLskpmcResponseValidationError{}
 
-// Validate checks the field values on SubscribeRequest with the rules defined
+// Validate checks the field values on DeleteLskpmcRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *DeleteLskpmcRequest) Validate() error {
+	if m == nil {
+		return nil
+	}
+
+	// no validation rules for Lskpmc
+
+	return nil
+}
+
+// DeleteLskpmcRequestValidationError is the validation error returned by
+// DeleteLskpmcRequest.Validate if the designated constraints aren't met.
+type DeleteLskpmcRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e DeleteLskpmcRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e DeleteLskpmcRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e DeleteLskpmcRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e DeleteLskpmcRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e DeleteLskpmcRequestValidationError) ErrorName() string {
+	return "DeleteLskpmcRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e DeleteLskpmcRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sDeleteLskpmcRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = DeleteLskpmcRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = DeleteLskpmcRequestValidationError{}
+
+// Validate checks the field values on DeleteLskpmcResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *DeleteLskpmcResponse) Validate() error {
+	if m == nil {
+		return nil
+	}
+
+	return nil
+}
+
+// DeleteLskpmcResponseValidationError is the validation error returned by
+// DeleteLskpmcResponse.Validate if the designated constraints aren't met.
+type DeleteLskpmcResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e DeleteLskpmcResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e DeleteLskpmcResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e DeleteLskpmcResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e DeleteLskpmcResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e DeleteLskpmcResponseValidationError) ErrorName() string {
+	return "DeleteLskpmcResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e DeleteLskpmcResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sDeleteLskpmcResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = DeleteLskpmcResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = DeleteLskpmcResponseValidationError{}
+
+// Validate checks the field values on SubscribeLskpmcRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *SubscribeLskpmcRequest) Validate() error {
+	if m == nil {
+		return nil
+	}
+
+	return nil
+}
+
+// SubscribeLskpmcRequestValidationError is the validation error returned by
+// SubscribeLskpmcRequest.Validate if the designated constraints aren't met.
+type SubscribeLskpmcRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SubscribeLskpmcRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SubscribeLskpmcRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SubscribeLskpmcRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SubscribeLskpmcRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SubscribeLskpmcRequestValidationError) ErrorName() string {
+	return "SubscribeLskpmcRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SubscribeLskpmcRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSubscribeLskpmcRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SubscribeLskpmcRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SubscribeLskpmcRequestValidationError{}
+
+// Validate checks the field values on SubscribeLskpmcResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *SubscribeLskpmcResponse) Validate() error {
+	if m == nil {
+		return nil
+	}
+
+	// no validation rules for Lskpmcs
+
+	return nil
+}
+
+// SubscribeLskpmcResponseValidationError is the validation error returned by
+// SubscribeLskpmcResponse.Validate if the designated constraints aren't met.
+type SubscribeLskpmcResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SubscribeLskpmcResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SubscribeLskpmcResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SubscribeLskpmcResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SubscribeLskpmcResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SubscribeLskpmcResponseValidationError) ErrorName() string {
+	return "SubscribeLskpmcResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SubscribeLskpmcResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSubscribeLskpmcResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SubscribeLskpmcResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SubscribeLskpmcResponseValidationError{}
+
+// Validate checks the field values on CreateXafiRequest with the rules defined
 // in the proto definition for this message. If any rules are violated, an
 // error is returned.
-func (m *SubscribeRequest) Validate() error {
+func (m *CreateXafiRequest) Validate() error {
 	if m == nil {
 		return nil
 	}
 
+	// no validation rules for Xafis
+
 	return nil
 }
 
-// SubscribeRequestValidationError is the validation error returned by
-// SubscribeRequest.Validate if the designated constraints aren't met.
-type SubscribeRequestValidationError struct {
+// CreateXafiRequestValidationError is the validation error returned by
+// CreateXafiRequest.Validate if the designated constraints aren't met.
+type CreateXafiRequestValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -655,22 +1227,24 @@ type SubscribeRequestValidationError struct {
 }
 
 // Field function returns field value.
-func (e SubscribeRequestValidationError) Field() string { return e.field }
+func (e CreateXafiRequestValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e SubscribeRequestValidationError) Reason() string { return e.reason }
+func (e CreateXafiRequestValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e SubscribeRequestValidationError) Cause() error { return e.cause }
+func (e CreateXafiRequestValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e SubscribeRequestValidationError) Key() bool { return e.key }
+func (e CreateXafiRequestValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e SubscribeRequestValidationError) ErrorName() string { return "SubscribeRequestValidationError" }
+func (e CreateXafiRequestValidationError) ErrorName() string {
+	return "CreateXafiRequestValidationError"
+}
 
 // Error satisfies the builtin error interface
-func (e SubscribeRequestValidationError) Error() string {
+func (e CreateXafiRequestValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -682,14 +1256,14 @@ func (e SubscribeRequestValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sSubscribeRequest.%s: %s%s",
+		"invalid %sCreateXafiRequest.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = SubscribeRequestValidationError{}
+var _ error = CreateXafiRequestValidationError{}
 
 var _ interface {
 	Field() string
@@ -697,37 +1271,91 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = SubscribeRequestValidationError{}
+} = CreateXafiRequestValidationError{}
 
-// Validate checks the field values on SubscribeResponse with the rules defined
+// Validate checks the field values on CreateXafiResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *CreateXafiResponse) Validate() error {
+	if m == nil {
+		return nil
+	}
+
+	return nil
+}
+
+// CreateXafiResponseValidationError is the validation error returned by
+// CreateXafiResponse.Validate if the designated constraints aren't met.
+type CreateXafiResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e CreateXafiResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e CreateXafiResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e CreateXafiResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e CreateXafiResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e CreateXafiResponseValidationError) ErrorName() string {
+	return "CreateXafiResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e CreateXafiResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sCreateXafiResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = CreateXafiResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = CreateXafiResponseValidationError{}
+
+// Validate checks the field values on UpdateXafiRequest with the rules defined
 // in the proto definition for this message. If any rules are violated, an
 // error is returned.
-func (m *SubscribeResponse) Validate() error {
+func (m *UpdateXafiRequest) Validate() error {
 	if m == nil {
 		return nil
 	}
 
-	for idx, item := range m.GetLskpmcs() {
-		_, _ = idx, item
-
-		if v, ok := interface{}(item).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return SubscribeResponseValidationError{
-					field:  fmt.Sprintf("Lskpmcs[%v]", idx),
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
-			}
-		}
-
-	}
+	// no validation rules for Xafis
 
 	return nil
 }
 
-// SubscribeResponseValidationError is the validation error returned by
-// SubscribeResponse.Validate if the designated constraints aren't met.
-type SubscribeResponseValidationError struct {
+// UpdateXafiRequestValidationError is the validation error returned by
+// UpdateXafiRequest.Validate if the designated constraints aren't met.
+type UpdateXafiRequestValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -735,24 +1363,24 @@ type SubscribeResponseValidationError struct {
 }
 
 // Field function returns field value.
-func (e SubscribeResponseValidationError) Field() string { return e.field }
+func (e UpdateXafiRequestValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e SubscribeResponseValidationError) Reason() string { return e.reason }
+func (e UpdateXafiRequestValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e SubscribeResponseValidationError) Cause() error { return e.cause }
+func (e UpdateXafiRequestValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e SubscribeResponseValidationError) Key() bool { return e.key }
+func (e UpdateXafiRequestValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e SubscribeResponseValidationError) ErrorName() string {
-	return "SubscribeResponseValidationError"
+func (e UpdateXafiRequestValidationError) ErrorName() string {
+	return "UpdateXafiRequestValidationError"
 }
 
 // Error satisfies the builtin error interface
-func (e SubscribeResponseValidationError) Error() string {
+func (e UpdateXafiRequestValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -764,14 +1392,14 @@ func (e SubscribeResponseValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sSubscribeResponse.%s: %s%s",
+		"invalid %sUpdateXafiRequest.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = SubscribeResponseValidationError{}
+var _ error = UpdateXafiRequestValidationError{}
 
 var _ interface {
 	Field() string
@@ -779,25 +1407,22 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = SubscribeResponseValidationError{}
+} = UpdateXafiRequestValidationError{}
 
-// Validate checks the field values on Lskpmc with the rules defined in the
-// proto definition for this message. If any rules are violated, an error is returned.
-func (m *Lskpmc) Validate() error {
+// Validate checks the field values on UpdateXafiResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *UpdateXafiResponse) Validate() error {
 	if m == nil {
 		return nil
 	}
 
-	// no validation rules for Key
-
-	// no validation rules for Val
-
 	return nil
 }
 
-// LskpmcValidationError is the validation error returned by Lskpmc.Validate if
-// the designated constraints aren't met.
-type LskpmcValidationError struct {
+// UpdateXafiResponseValidationError is the validation error returned by
+// UpdateXafiResponse.Validate if the designated constraints aren't met.
+type UpdateXafiResponseValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -805,22 +1430,24 @@ type LskpmcValidationError struct {
 }
 
 // Field function returns field value.
-func (e LskpmcValidationError) Field() string { return e.field }
+func (e UpdateXafiResponseValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e LskpmcValidationError) Reason() string { return e.reason }
+func (e UpdateXafiResponseValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e LskpmcValidationError) Cause() error { return e.cause }
+func (e UpdateXafiResponseValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e LskpmcValidationError) Key() bool { return e.key }
+func (e UpdateXafiResponseValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e LskpmcValidationError) ErrorName() string { return "LskpmcValidationError" }
+func (e UpdateXafiResponseValidationError) ErrorName() string {
+	return "UpdateXafiResponseValidationError"
+}
 
 // Error satisfies the builtin error interface
-func (e LskpmcValidationError) Error() string {
+func (e UpdateXafiResponseValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -832,14 +1459,14 @@ func (e LskpmcValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sLskpmc.%s: %s%s",
+		"invalid %sUpdateXafiResponse.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = LskpmcValidationError{}
+var _ error = UpdateXafiResponseValidationError{}
 
 var _ interface {
 	Field() string
@@ -847,4 +1474,414 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = LskpmcValidationError{}
+} = UpdateXafiResponseValidationError{}
+
+// Validate checks the field values on RetrieveXafiRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *RetrieveXafiRequest) Validate() error {
+	if m == nil {
+		return nil
+	}
+
+	// no validation rules for Xafi
+
+	return nil
+}
+
+// RetrieveXafiRequestValidationError is the validation error returned by
+// RetrieveXafiRequest.Validate if the designated constraints aren't met.
+type RetrieveXafiRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e RetrieveXafiRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e RetrieveXafiRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e RetrieveXafiRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e RetrieveXafiRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e RetrieveXafiRequestValidationError) ErrorName() string {
+	return "RetrieveXafiRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e RetrieveXafiRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sRetrieveXafiRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = RetrieveXafiRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = RetrieveXafiRequestValidationError{}
+
+// Validate checks the field values on RetrieveXafiResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *RetrieveXafiResponse) Validate() error {
+	if m == nil {
+		return nil
+	}
+
+	// no validation rules for Xafis
+
+	return nil
+}
+
+// RetrieveXafiResponseValidationError is the validation error returned by
+// RetrieveXafiResponse.Validate if the designated constraints aren't met.
+type RetrieveXafiResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e RetrieveXafiResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e RetrieveXafiResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e RetrieveXafiResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e RetrieveXafiResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e RetrieveXafiResponseValidationError) ErrorName() string {
+	return "RetrieveXafiResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e RetrieveXafiResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sRetrieveXafiResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = RetrieveXafiResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = RetrieveXafiResponseValidationError{}
+
+// Validate checks the field values on DeleteXafiRequest with the rules defined
+// in the proto definition for this message. If any rules are violated, an
+// error is returned.
+func (m *DeleteXafiRequest) Validate() error {
+	if m == nil {
+		return nil
+	}
+
+	// no validation rules for Xafi
+
+	return nil
+}
+
+// DeleteXafiRequestValidationError is the validation error returned by
+// DeleteXafiRequest.Validate if the designated constraints aren't met.
+type DeleteXafiRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e DeleteXafiRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e DeleteXafiRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e DeleteXafiRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e DeleteXafiRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e DeleteXafiRequestValidationError) ErrorName() string {
+	return "DeleteXafiRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e DeleteXafiRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sDeleteXafiRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = DeleteXafiRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = DeleteXafiRequestValidationError{}
+
+// Validate checks the field values on DeleteXafiResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *DeleteXafiResponse) Validate() error {
+	if m == nil {
+		return nil
+	}
+
+	return nil
+}
+
+// DeleteXafiResponseValidationError is the validation error returned by
+// DeleteXafiResponse.Validate if the designated constraints aren't met.
+type DeleteXafiResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e DeleteXafiResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e DeleteXafiResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e DeleteXafiResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e DeleteXafiResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e DeleteXafiResponseValidationError) ErrorName() string {
+	return "DeleteXafiResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e DeleteXafiResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sDeleteXafiResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = DeleteXafiResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = DeleteXafiResponseValidationError{}
+
+// Validate checks the field values on SubscribeXafiRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *SubscribeXafiRequest) Validate() error {
+	if m == nil {
+		return nil
+	}
+
+	return nil
+}
+
+// SubscribeXafiRequestValidationError is the validation error returned by
+// SubscribeXafiRequest.Validate if the designated constraints aren't met.
+type SubscribeXafiRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SubscribeXafiRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SubscribeXafiRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SubscribeXafiRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SubscribeXafiRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SubscribeXafiRequestValidationError) ErrorName() string {
+	return "SubscribeXafiRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SubscribeXafiRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSubscribeXafiRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SubscribeXafiRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SubscribeXafiRequestValidationError{}
+
+// Validate checks the field values on SubscribeXafiResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *SubscribeXafiResponse) Validate() error {
+	if m == nil {
+		return nil
+	}
+
+	// no validation rules for Xafis
+
+	return nil
+}
+
+// SubscribeXafiResponseValidationError is the validation error returned by
+// SubscribeXafiResponse.Validate if the designated constraints aren't met.
+type SubscribeXafiResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SubscribeXafiResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SubscribeXafiResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SubscribeXafiResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SubscribeXafiResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SubscribeXafiResponseValidationError) ErrorName() string {
+	return "SubscribeXafiResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SubscribeXafiResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSubscribeXafiResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SubscribeXafiResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SubscribeXafiResponseValidationError{}

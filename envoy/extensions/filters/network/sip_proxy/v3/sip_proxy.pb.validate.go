@@ -238,6 +238,21 @@ func (m *SipProtocolOptions) Validate() error {
 
 	// no validation rules for RegistrationAffinity
 
+	for idx, item := range m.GetCustomizedAffinity() {
+		_, _ = idx, item
+
+		if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return SipProtocolOptionsValidationError{
+					field:  fmt.Sprintf("CustomizedAffinity[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -296,6 +311,79 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = SipProtocolOptionsValidationError{}
+
+// Validate checks the field values on CustomizedAffinity with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *CustomizedAffinity) Validate() error {
+	if m == nil {
+		return nil
+	}
+
+	// no validation rules for KeyName
+
+	// no validation rules for Query
+
+	// no validation rules for Subscribe
+
+	return nil
+}
+
+// CustomizedAffinityValidationError is the validation error returned by
+// CustomizedAffinity.Validate if the designated constraints aren't met.
+type CustomizedAffinityValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e CustomizedAffinityValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e CustomizedAffinityValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e CustomizedAffinityValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e CustomizedAffinityValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e CustomizedAffinityValidationError) ErrorName() string {
+	return "CustomizedAffinityValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e CustomizedAffinityValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sCustomizedAffinity.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = CustomizedAffinityValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = CustomizedAffinityValidationError{}
 
 // Validate checks the field values on SipProxy_SipSettings with the rules
 // defined in the proto definition for this message. If any rules are
